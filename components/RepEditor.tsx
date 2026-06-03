@@ -5,7 +5,7 @@ import { FiberRepProfile, repPasscode } from "@/lib/fiberReps";
 
 type EditableRep = Pick<
   FiberRepProfile,
-  "name" | "fullName" | "role" | "city" | "phoneLabel" | "phoneHref" | "email" | "photoUrl" | "accent" | "tagline" | "heroHeadline" | "heroBody" | "heroNote" | "cardNote"
+  "name" | "fullName" | "role" | "city" | "phoneLabel" | "phoneHref" | "email" | "instagramHandle" | "instagramUrl" | "photoUrl" | "accent" | "tagline" | "heroHeadline" | "heroBody" | "heroNote" | "cardNote"
 >;
 
 const EDITABLE_FIELDS: Array<keyof EditableRep> = [
@@ -16,6 +16,8 @@ const EDITABLE_FIELDS: Array<keyof EditableRep> = [
   "phoneLabel",
   "phoneHref",
   "email",
+  "instagramHandle",
+  "instagramUrl",
   "photoUrl",
   "accent",
   "tagline",
@@ -76,7 +78,7 @@ export default function RepEditor({ rep }: { rep: FiberRepProfile }) {
         <section className="editGate">
           <p className="hubEyebrow">Rep editor</p>
           <h1>{rep.name}</h1>
-          <p>Enter the temporary passcode to edit this page.</p>
+          <p>Enter the temporary passcode to edit contact info, Instagram, page copy, photo URL, and accent color.</p>
           <div className="editUnlock">
             <input value={passcode} onChange={(event) => setPasscode(event.target.value)} placeholder={`${rep.slug}69`} type="password" />
             <button type="button" onClick={unlock}>Unlock</button>
@@ -106,6 +108,8 @@ export default function RepEditor({ rep }: { rep: FiberRepProfile }) {
           <TextField label="Phone label" value={draft.phoneLabel || ""} onChange={(value) => update("phoneLabel", value)} placeholder="937-000-0000" />
           <TextField label="Phone digits" value={draft.phoneHref || ""} onChange={(value) => update("phoneHref", value)} placeholder="19370000000" />
           <TextField label="Email" value={draft.email || ""} onChange={(value) => update("email", value)} />
+          <TextField label="Instagram handle" value={draft.instagramHandle || ""} onChange={(value) => update("instagramHandle", value)} placeholder="@username" />
+          <TextField label="Instagram URL" value={draft.instagramUrl || ""} onChange={(value) => update("instagramUrl", value)} placeholder="https://instagram.com/username" />
           <TextField label="Photo URL" value={draft.photoUrl || ""} onChange={(value) => update("photoUrl", value)} placeholder={`/reps/${rep.slug}.jpg`} />
           <label className="editField">
             <span>Accent color</span>

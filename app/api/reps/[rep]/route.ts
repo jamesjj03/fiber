@@ -17,6 +17,8 @@ const EDITABLE_FIELDS: Array<keyof FiberRepProfile> = [
   "phoneLabel",
   "phoneHref",
   "email",
+  "instagramHandle",
+  "instagramUrl",
   "photoUrl",
   "accent",
   "tagline",

@@ -10,6 +10,8 @@ export type FiberRepProfile = {
   phoneLabel?: string;
   phoneHref?: string;
   email?: string;
+  instagramHandle?: string;
+  instagramUrl?: string;
   photoUrl?: string;
   photoAlt?: string;
   accent?: string;
@@ -51,7 +53,7 @@ export function applyFiberRepToConfig(config: Partial<FiberConfig>, rep: FiberRe
   const photoUrl = rep.photoUrl === undefined ? normalized.hero.photoUrl : rep.photoUrl;
   const photoAlt = rep.photoAlt || `${rep.name}, local fiber rep`;
   const headline = rep.heroHeadline || `Hey, I'm ${rep.name}`;
-  const body = rep.heroBody || "I help local homes compare their current internet bill with Kinetic and Frontier fiber.";
+  const body = rep.heroBody || "I compare fiber quotes and help make the switch simple.";
   const textBody = rep.textBody || `Hey ${rep.name}, can you help me compare my current internet with fiber?`;
 
   const withRep = normalizeFiberConfig({

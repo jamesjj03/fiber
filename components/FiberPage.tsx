@@ -271,6 +271,9 @@ export default function FiberPage({
   const repInitials = repName.split(/\s+/).map((part) => part[0]).join("").slice(0, 2).toUpperCase() || "FR";
   const hasPhone = Boolean(config.contact.phoneHref);
   const hasEmail = Boolean(config.contact.email);
+  const instagramUrl = rep.instagramUrl
+    || (rep.instagramHandle ? `https://instagram.com/${rep.instagramHandle.replace(/^@/, "")}` : "");
+  const instagramLabel = rep.instagramHandle || "Instagram";
   const primaryContactHref = hasPhone ? smsHref(config.contact) : hasEmail ? `mailto:${config.contact.email}` : "#contact";
   const primaryContactLabel = hasPhone ? `Text ${repName}` : hasEmail ? `Email ${repName}` : `${repName} contact pending`;
   const leadSmsBody = [
@@ -313,8 +316,10 @@ export default function FiberPage({
             <p className="fiberJjuNote">{config.hero.jjuNote}</p>
             <div className="fiberHeroActions">
               <a className="fiberBtn primary" href={primaryContactHref}>{primaryContactLabel}</a>
+              {instagramUrl && <a className="fiberBtn social" href={instagramUrl} target="_blank" rel="noreferrer">{instagramLabel}</a>}
               <a className="fiberBtn secondary" href="#quote">Build quote</a>
             </div>
+            {!rep.redirectUrl && <a className="fiberEditLink" href={`/${rep.slug}/edit`}>Edit profile</a>}
           </div>
 
           <div className="fiberRepPanel">
